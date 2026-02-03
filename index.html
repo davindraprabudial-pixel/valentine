@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Valentine 💖</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      color: white;
+      overflow: hidden;
+    }
+    .card {
+      background: rgba(255,255,255,0.2);
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+    h1 { font-size: 2.5em; }
+    p { font-size: 1.2em; }
+
+    button {
+      background-color: #ff4d6d;
+      border: none;
+      color: white;
+      padding: 15px 25px;
+      font-size: 1.1em;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    button:hover {
+      background-color: #ff1f4b;
+      transform: scale(1.05);
+    }
+
+    #noBtn {
+      position: absolute;
+    }
+
+    #response {
+      margin-top: 20px;
+      font-size: 1.3em;
+      font-weight: bold;
+      display: none;
+    }
+
+    audio {
+      margin-top: 20px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Happy Valentine’s Day 💘</h1>
+    <p>To the most beautiful girl in my life,</p>
+    <p>You make my days brighter, my heart happier, and my world better just by being in it.</p>
+    <p>I’m so lucky to have you, and I can’t wait to make more memories with you 💕</p>
+    <p>Forever yours,<br><strong>Danny</strong></p>
+
+    <button onclick="askValentine()">Yes 💖</button>
+    <button id="noBtn">No 🙄</button>
+
+    <div id="response">She said YES!!! 🥹💞💍</div>
+
+    <!-- Music player -->
+    <audio controls autoplay loop>
+      <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5e2e78c5b4.mp3?filename=romantic-ambient-11353.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <p style="font-size:0.8em;">🎵 Romantic background vibe (you can replace this with your own song file)</p>
+  </div>
+
+  <script>
+    function askValentine() {
+      document.getElementById("response").style.display = "block";
+    }
+
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+  </script>
+</body>
+</html>
