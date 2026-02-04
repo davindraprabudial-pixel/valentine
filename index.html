@@ -59,6 +59,7 @@
       width: 100%;
       max-width: 300px;
       border-radius: 15px;
+      display: none;
     }
 
     @media (max-width: 480px) {
@@ -82,12 +83,14 @@
 
     <div id="response">She said YES!!! 🥹💞💍</div>
 
-    <img class="gif" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Cute Valentine GIF">
+    <!-- Hidden GIF (shows after YES) -->
+    <img id="yesGif" class="gif" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Cute Valentine GIF">
   </div>
 
   <script>
     function askValentine() {
       document.getElementById("response").style.display = "block";
+      document.getElementById("yesGif").style.display = "block";
     }
 
     const noBtn = document.getElementById("noBtn");
