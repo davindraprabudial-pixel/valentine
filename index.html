@@ -2,145 +2,128 @@
 <html>
 <head>
   <title>Nella 💖 My Valentine</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <style>
     body {
       background: linear-gradient(to right, #ff758c, #ff7eb3);
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 20px;
+      padding: 12px;
       color: white;
-      overflow: hidden;
+      overflow-y: auto;
+      min-height: 100vh;
     }
 
     .card {
       background: rgba(255,255,255,0.2);
-      padding: 25px;
-      border-radius: 20px;
-      max-width: 420px;
+      padding: 18px;
+      border-radius: 18px;
+      max-width: 360px;
       margin: auto;
-      box-shadow: 0 0 20px rgba(0,0,0,0.25);
-      position: relative;
-      z-index: 2;
+      box-shadow: 0 0 18px rgba(0,0,0,0.25);
     }
 
-    h1 { font-size: 2em; }
-    p { font-size: 1.05em; }
+    h1 { font-size: 1.7em; }
+    p { font-size: 0.95em; }
 
     .yesBtn {
       background-color: #ff2d55;
       border: none;
       color: white;
-      padding: 18px 30px;
-      font-size: 1.2em;
-      border-radius: 30px;
+      padding: 14px 20px;
+      font-size: 1.05em;
+      border-radius: 25px;
       cursor: pointer;
-      margin: 10px;
+      margin: 8px 0;
       animation: shake 1.5s infinite;
-      box-shadow: 0 0 15px rgba(255,45,85,0.6);
+      width: 100%;
     }
 
     .noBtn {
       background-color: #ff8fa3;
       border: none;
       color: white;
-      padding: 12px 20px;
-      font-size: 0.95em;
-      border-radius: 25px;
+      padding: 10px 18px;
+      font-size: 0.9em;
+      border-radius: 20px;
       cursor: pointer;
       position: absolute;
     }
 
     @keyframes shake {
       0% { transform: translateX(0); }
-      25% { transform: translateX(-3px); }
-      50% { transform: translateX(3px); }
-      75% { transform: translateX(-3px); }
+      25% { transform: translateX(-2px); }
+      50% { transform: translateX(2px); }
+      75% { transform: translateX(-2px); }
       100% { transform: translateX(0); }
     }
 
     #response {
-      margin-top: 15px;
-      font-size: 1.3em;
+      margin-top: 10px;
+      font-size: 1.1em;
       font-weight: bold;
       display: none;
     }
 
     video {
-      margin-top: 15px;
+      margin-top: 12px;
       width: 100%;
-      border-radius: 15px;
+      max-height: 45vh;
+      border-radius: 12px;
       display: none;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
     }
 
     .heart {
       position: fixed;
       bottom: -20px;
-      font-size: 24px;
+      font-size: 22px;
       animation: float 6s linear infinite;
       opacity: 0.8;
       z-index: 1;
     }
 
     @keyframes float {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-110vh); opacity: 0; }
     }
 
-    /* Final Love Screen */
     #loveScreen {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      inset: 0;
       background: linear-gradient(to right, #ff4d6d, #ff85a2);
       display: none;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      z-index: 999;
       text-align: center;
       padding: 20px;
+      z-index: 999;
     }
 
-    #loveScreen h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-    }
-
-    #loveScreen p {
-      font-size: 1.4em;
-    }
-
-    @media (max-width: 480px) {
-      .yesBtn { width: 100%; }
-      #loveScreen h1 { font-size: 2.2em; }
-    }
+    #loveScreen h1 { font-size: 2.4em; }
+    #loveScreen p { font-size: 1.2em; }
   </style>
 </head>
 
 <body>
   <div class="card">
     <h1>Hey Nella 💕</h1>
-    <p>I’ve been thinking about you a lot lately… and honestly, you make my whole world feel softer and brighter 🥹</p>
-    <p>You make me smile without trying, and you make my heart feel at home.</p>
+    <p>You make my whole world softer, brighter, and better just by being in it 🥹</p>
+    <p>You make me smile without trying and my heart feel at home.</p>
     <p>I don’t need a special day to love you… but I *do* need you to be my Valentine 😌💖</p>
-    <p>So I have one very important question just for you…</p>
+    <p>So I have one very important question…</p>
 
     <button class="yesBtn" onclick="askValentine()">YES, I’LL BE YOUR VALENTINE 💘</button>
     <button class="noBtn" id="noBtn">No 😒</button>
 
-    <div id="response">Nella… you just made me the happiest person ever 😭💞💍</div>
+    <div id="response">Nella… you just made me the happiest person ever 😭💞</div>
 
     <video id="yesVideo" playsinline>
       <source src="my-valentine-video.mp4.mov" type="video/mp4">
     </video>
   </div>
 
-  <!-- Final Love Screen -->
   <div id="loveScreen">
     <h1>I Love You, Nella ❤️</h1>
     <p>Today, tomorrow, and always… it’s you.</p>
@@ -153,9 +136,7 @@
       video.style.display = "block";
       video.play();
       startHearts();
-
-      // When video ends → show love screen
-      video.onended = function() {
+      video.onended = () => {
         document.getElementById("loveScreen").style.display = "flex";
       };
     }
@@ -178,10 +159,9 @@
         heart.className = "heart";
         heart.innerText = "❤️";
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = Math.random() * 20 + 20 + "px";
         document.body.appendChild(heart);
         setTimeout(() => heart.remove(), 6000);
-      }, 300);
+      }, 350);
     }
   </script>
 </body>
