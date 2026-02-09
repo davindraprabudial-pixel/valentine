@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Valentine 💖</title>
+  <title>Nella 💖 My Valentine</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       background: linear-gradient(to right, #ff758c, #ff7eb3);
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       text-align: center;
       padding: 20px;
       color: white;
@@ -21,6 +21,8 @@
       max-width: 420px;
       margin: auto;
       box-shadow: 0 0 20px rgba(0,0,0,0.25);
+      position: relative;
+      z-index: 2;
     }
 
     h1 { font-size: 2em; }
@@ -68,36 +70,80 @@
     video {
       margin-top: 15px;
       width: 100%;
-      max-width: 300px;
       border-radius: 15px;
       display: none;
       box-shadow: 0 0 15px rgba(0,0,0,0.4);
     }
 
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 24px;
+      animation: float 6s linear infinite;
+      opacity: 0.8;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    }
+
+    /* Final Love Screen */
+    #loveScreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(to right, #ff4d6d, #ff85a2);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 999;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #loveScreen h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    #loveScreen p {
+      font-size: 1.4em;
+    }
+
     @media (max-width: 480px) {
-      h1 { font-size: 1.8em; }
-      p { font-size: 1em; }
       .yesBtn { width: 100%; }
+      #loveScreen h1 { font-size: 2.2em; }
     }
   </style>
 </head>
 
 <body>
   <div class="card">
-    <h1>Hey Beautiful 💕</h1>
-    <p>You make my heart feel safe, my days feel brighter, and my life feel sweeter just by being in it.</p>
+    <h1>Hey Nella 💕</h1>
+    <p>I’ve been thinking about you a lot lately… and honestly, you make my whole world feel softer and brighter 🥹</p>
+    <p>You make me smile without trying, and you make my heart feel at home.</p>
     <p>I don’t need a special day to love you… but I *do* need you to be my Valentine 😌💖</p>
-    <p>So I have one very important question…</p>
+    <p>So I have one very important question just for you…</p>
 
-    <button class="yesBtn" onclick="askValentine()">YES, OF COURSE 💘</button>
+    <button class="yesBtn" onclick="askValentine()">YES, I’LL BE YOUR VALENTINE 💘</button>
     <button class="noBtn" id="noBtn">No 😒</button>
 
-    <div id="response">You just made me the happiest person ever 😭💞💍</div>
+    <div id="response">Nella… you just made me the happiest person ever 😭💞💍</div>
 
-    <!-- Hidden Video (shows after YES) -->
-    <video id="yesVideo" controls>
+    <video id="yesVideo" playsinline>
       <source src="my-valentine-video.mp4.mov" type="video/mp4">
     </video>
+  </div>
+
+  <!-- Final Love Screen -->
+  <div id="loveScreen">
+    <h1>I Love You, Nella ❤️</h1>
+    <p>Today, tomorrow, and always… it’s you.</p>
   </div>
 
   <script>
@@ -106,6 +152,12 @@
       const video = document.getElementById("yesVideo");
       video.style.display = "block";
       video.play();
+      startHearts();
+
+      // When video ends → show love screen
+      video.onended = function() {
+        document.getElementById("loveScreen").style.display = "flex";
+      };
     }
 
     const noBtn = document.getElementById("noBtn");
@@ -119,6 +171,18 @@
 
     noBtn.addEventListener("mouseover", moveButton);
     noBtn.addEventListener("touchstart", moveButton);
+
+    function startHearts() {
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerText = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 20 + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }, 300);
+    }
   </script>
 </body>
 </html>
